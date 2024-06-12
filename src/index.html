@@ -1,13 +1,42 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-    <!-- support for mobile touch devices -->
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch GE Healthcare</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Title</h1>
+    <img src="<%= require('./images/image.png') %>" alt="Logo" class="logo">
+    
+   
+        <h1 class="title">
+            Welcome to GE Healthcare Watch system
+        </h1>
+  
+    <div class="clocks">
+       
+        <div class="circle">
+            <div class="watch">
+                <div class="screen">
+                    <div class="time">00:00<span class="seconds">00</span></div>
+                    <div class="button mode">mode</div>
+                    <div class="button increase">increase</div>
+                    <div class="button light">light</div>
+                    <div class="button reset">reset</div>
+                    <div class="button toggle-format"></div> 
+                </div>
+                <div class="time-zone"></div> 
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="controls">
+        <select id="timezone-selector"></select>
+        <button id="add-clock-button">Add Clock</button>
+    </div>
+
+    <script src="bundle.js"></script>
 </body>
 </html>

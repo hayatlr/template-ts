@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './src/index.ts',
   devtool: 'source-map',
-  target: 'node',
+  target: 'web',
   module: {
     rules: [
       {
@@ -16,6 +16,10 @@ module.exports = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
     ],
   },
   resolve: {
@@ -24,6 +28,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
   plugins: [new HtmlWebpackPlugin({
     title: 'GE Template ts',
@@ -31,7 +36,11 @@ module.exports = {
     filename: 'index.html',
   })],
   devServer: {
-    host: '0.0.0.0',
-    port: '1234',
-  }
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+    compress: true,
+    port: 1234,
+    open: true,
+  },
 };
